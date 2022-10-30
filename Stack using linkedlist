@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+        int data;
+        struct node *link;
+}*top,*newnode,*ptr;
+int item;
+void push()
+{
+        newnode=malloc(sizeof(struct node));
+        printf("Enter the item:");
+        scanf("%d",&item);
+        newnode->data=item;
+        if(top==NULL)
+                newnode->link=NULL;
+        else
+                newnode->link=top;
+        top=newnode;
+}
+void pop()
+{
+        if(top==NULL)
+        {
+                printf("STACK IS EMPTY\n");
+        }
+        else
+        {
+                printf("The deleted element is:%d\n",top->data);
+                top=top->link;
+        }
+}
+void display()
+{
+        ptr=top;
+        if(top==NULL)
+        {
+ printf("THE LIST IS EMPTY.\n");
+        }
+        else
+        {
+                printf("THE ELEMENTS IN THE STACK ARE:\n");
+                while(ptr!=NULL)
+                {
+                        printf("%d\n",ptr->data);
+                        ptr=ptr->link;
+                }
+        }
+}
+void count()
+{
+        int count=0;
+        ptr=top;
+        if(top==NULL)
+        {
+                printf("THE LIST IS EMPTY.\n");
+}
+        else
+        {
+                while(ptr!=NULL)
+                {
+                        ++count;
+                        ptr=ptr->link;
+                }
+                printf("THE NUMBER OF NODES IN THE STACK ARE:%d\n",count);
+        }
+}
+int main()
+{
+        int w=1,ch;
+        top=NULL;
+        while(w)
+        {
+                printf("1.PUSH\n2.POP\n3.DISPLAY\n4.COUNT\n5.EXIT\nEnter your choice:");
+                scanf("%d",&ch);
+                switch(ch)
+                {
+                case 1:
+                        push();
+                        break;
+                case 2:
+                        pop();
+                        break;
+                case 3:
+                        display();
+                        break;
+                case 4:
+                        count();
+                        break;
+                case 5:
+                        w=0;
+                        break;
+                default:
+                        printf("ENTER VALID CHOICE!!!\n");
+                 }
+        }
+}
+
